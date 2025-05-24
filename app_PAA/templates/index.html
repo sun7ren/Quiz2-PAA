@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>House Finder</title>
+    <style>
+        body {
+            font-family: poppins, sans-serif;
+            margin: 40px;
+        }
+        input, select {
+            margin: 5px 0;
+            padding: 5px;
+            width: 300px;
+        }
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 100%;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+        }
+        th {
+            background-color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1>House Finder</h1>
+
+    <form method="POST">
+        <label>Max Price (IDR):</label><br>
+        <select name="price">
+            <option value="1000000000">1,000,000,000</option>
+            <option value="2000000000">2,000,000,000</option>
+            <option value="3000000000">3,000,000,000</option>
+        </select><br><br>
+
+        <label>Max Crime Rate (%):</label><br>
+        <select name="crime">
+            <option value="2">2%</option>
+            <option value="4">4%</option>
+            <option value="6">6%</option>
+        </select><br><br>
+
+        <label>Coordinates (lat,lon):</label><br>
+        <input type="text" name="coords" placeholder="e.g., -7.2575,112.7521" required><br><br>
+
+        <label>Max Distance (km):</label><br>
+        <input type="number" name="max_distance" step="0.1" value="10" required><br><br>
+
+        <label>Max Houses to Show:</label><br>
+        <input type="number" name="max_houses" value="10" required><br><br>
+
+        <label>Sort By:</label><br>
+        <select name="sort_by">
+            <option value="score">Score</option>
+            <option value="distance">Distance</option>
+            <option value="price">Price</option>
+            <option value="crime">Crime Rate</option>
+        </select><br><br>
+
+        <label>Sort Order:</label><br>
+        <select name="sort_order">
+            <option value="asc">Ascending</option>
+            <option value="desc">Descending</option>
+        </select><br><br>
+        
+        <strong>Weights (don’t need to total 1, they’ll be normalized):</strong><br><br>
+
+        <label>Weight - Distance:</label><br>
+        <input type="number" name="weight_distance" step="0.1" value="0.4" required><br>
+
+        <label>Weight - Price:</label><br>
+        <input type="number" name="weight_price" step="0.1" value="0.4" required><br>
+
+        <label>Weight - Crime:</label><br>
+        <input type="number" name="weight_crime" step="0.1" value="0.2" required><br><br>
+
+        <input type="submit" value="Find Houses">
+    </form>
+
+    {% if error %}
+        <p style="color: red;"><strong>{{ error }}</strong></p>
+    {% endif %}
+
+    {% if results %}
+        <h2>Matching Houses</h2>
+        <table>
+            <tr>
+                <th>District</th>
+                <th>Distance (km)</th>
+                <th>Price (IDR)</th>
+                <th>Crime Rate (%)</th>
+                <th>Score</th>
+            </tr>
+            {% for house in results %}
+            <tr>
+                <td>{{ house['District'] }}</td>
+                <td>{{ "%.2f"|format(house['Distance (km)']) }}</td>
+                <td>{{ "{:,.0f}".format(house['Price']) }}</td>
+                <td>{{ "%.2f"|format(house['Crime Rate']) }}</td>
+                <td>{{ "%.3f"|format(house['Score']) }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+</body>
+</html>
