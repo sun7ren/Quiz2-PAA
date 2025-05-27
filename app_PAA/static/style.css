@@ -1,0 +1,133 @@
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to right, #f9f9fb, #eef4f7);
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+.container {
+    max-width: 950px;
+    margin: auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e3eaf0;
+}
+
+h1 {
+    text-align: center;
+    color: #2b6777;
+    margin-bottom: 30px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.form-group {
+    flex: 1 1 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+}
+
+input, select {
+    padding: 10px;
+    border: 1px solid #ccd6dd;
+    border-radius: 6px;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+input:focus, select:focus {
+    border-color: #2b6777;
+    outline: none;
+}
+
+fieldset.weights {
+    width: 100%;
+    border: 2px solid #d9eaf0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 10px;
+    background-color: #f5fafd;
+}
+
+legend {
+    font-weight: bold;
+    padding: 0 8px;
+    color: #2b6777;
+}
+
+button {
+    padding: 14px 28px;
+    margin-top: 20px;
+    background: linear-gradient(to right, #2b6777, #52ab98);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 16px;
+    transition: transform 0.2s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: linear-gradient(to right, #3c8da0, #76c7b5);
+}
+
+.table-container {
+    margin-top: 30px;
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+th, td {
+    padding: 14px 18px;
+    border: 1px solid #e0e0e0;
+    text-align: center;
+}
+
+th {
+    background-color: #d7f0f5;
+    font-weight: 600;
+    color: #2b6777;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f0f8ff;
+    transition: background-color 0.2s ease;
+}
+
+.error {
+    margin-top: 20px;
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    background-color: #fcebea;
+    border: 1px solid #f5c6cb;
+    padding: 12px;
+    border-radius: 8px;
+}
